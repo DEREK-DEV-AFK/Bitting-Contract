@@ -3,7 +3,7 @@
 An smart contract which lets you create betting event for and let other user bet on it, and then distribute price to winners.
 
 ## Coverage
-![Alt text](images/coverage.png "Title")
+![Alt text](images/coverage1.png "Title")
 
 
 ## Explanation

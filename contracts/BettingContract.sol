@@ -49,7 +49,7 @@ contract bettingSpace {
 
     teamDetails[] teams;
 
-    address owner;
+    address public owner;
 
     modifier onlyOwner() {
         require(msg.sender == owner, "only owner");
@@ -98,12 +98,12 @@ contract bettingSpace {
         validEventId(_bettingEventId)
         returns (bool)
     {
-        require(!hasBitted[_bettingEventId][msg.sender], "can only bit once");
+        require(msg.sender != owner, "contract owner cannot bit");
         require(
             msg.sender != bettings[_bettingEventId].creator,
             "event creator cannot bit"
         );
-        require(msg.sender != owner, "contract owner cannot bit");
+        require(!hasBitted[_bettingEventId][msg.sender], "can only bit once");
         require(
             _teamIdToBit == bettings[_bettingEventId].team1Id ||
                 _teamIdToBit == bettings[_bettingEventId].team2Id,
@@ -170,6 +170,8 @@ contract bettingSpace {
         uint _startTime,
         uint _endTime
     ) external validTeamId(_team0Id) validTeamId(_team1Id) returns (bool) {
+        require(msg.sender != owner, "owner cannot create betting event");
+        require(bytes(_eventName).length != 0, "invalid event name");
         require(_team0Id != _team1Id, "team id cannot be same");
         require(
             _startTime >= block.timestamp,
@@ -180,8 +182,6 @@ contract bettingSpace {
             _startTime != _endTime,
             "start time and end time cannot be same"
         );
-        require(bytes(_eventName).length != 0, "invalid event name");
-        require(msg.sender != owner, "owner cannot create betting event");
 
         bettings.push(
             bettingEventDetails(
@@ -282,6 +282,7 @@ contract bettingSpace {
                 winnerCount++;
             }
         }
+        require(winnerCount > 0,"no winners");
         amountPerWinnerUser =
             bettings[_eventId].totalAmountCollected /
             winnerCount;

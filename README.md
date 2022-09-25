@@ -33,6 +33,20 @@ An smart contract which lets you create betting event for and let other user bet
    - `DistributeEventAmount`function only allows owner of the contract to distribute total amount equally to winner of the specific event
    - `calculateWinnersAndAmount` an internal function use to calculate the equal distributed amount
 
+## Sample Hardhat Project
+
+This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+
+Try running some of the following tasks:
+
+```shell
+npx hardhat help
+npx hardhat test
+GAS_REPORT=true npx hardhat test
+npx hardhat node
+npx hardhat run scripts/deploy.js
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

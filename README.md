@@ -5,6 +5,11 @@ An smart contract which lets you create betting event for and let other user bet
 ## Coverage
 ![Alt text](images/coverage1.png "Title")
 
+## Installation 
+to install all the dependencies
+```bash
+npm install
+```
 
 ## Explanation
 1) #### Events
@@ -36,18 +41,18 @@ An smart contract which lets you create betting event for and let other user bet
    - `DistributeEventAmount`function only allows owner of the contract to distribute total amount equally to winner of the specific event
    - `calculateWinnersAndAmount` an internal function use to calculate the equal distributed amount
 
-## Sample Hardhat Project
+## Hardhat
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
 Try running some of the following tasks:
 
 ```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+npx hardhat help // to see all the option
+npx hardhat test // to run test
+GAS_REPORT=true npx hardhat test // running test with gasg report
+npx hardhat node // to start localnode 
+npx hardhat run scripts/deploy.js // deploy contract
 ```
 
 ## Contributing

@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/sufiyanmemon/Documents/personal info/other_projects/BettingApp/Bitting-Contract/bettingapp/contracts/BettingContract.sol": {
+      "lastModificationDate": 1669729888278,
+      "contentHash": "6d03eb3846f5aeddb8f5127cd49e0707",
+      "sourceName": "contracts/BettingContract.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "bettingSpace"
+      ]
+    }
+  }
+}

@@ -15,6 +15,8 @@ contract bettingSpace {
 
     event EventResult(uint indexed eventID, uint winnerTeamId);
 
+    event EventAmountDistribution (uint indexed eventID, uint winnerTeamId, address indexed givenTo);
+
     // struct for saving details of bettings event
     struct bettingEventDetails {
         address creator;
@@ -40,6 +42,7 @@ contract bettingSpace {
         string teamName;
         uint teamId;
     }
+
     // from event id to struct of bittorDetails
     mapping(uint => bettorDetails[]) eventBettorsDetails;
     // from event id to user
@@ -256,14 +259,17 @@ contract bettingSpace {
         );
         uint amount = calculateWinnersAndAmount(_eventId);
 
+        uint winnerTeam = bettings[_eventId].winnerId;
+
         for (uint i = 0; i < eventBettorsDetails[_eventId].length; i++) {
             address user = eventBettorsDetails[_eventId][i].bittorAddress;
             if (
                 eventBettorsDetails[_eventId][i].teamId ==
-                bettings[_eventId].winnerId
+                winnerTeam
             ) {
                 (bool sent, ) = user.call{value: amount}("");
                 require(sent, "eth transfer failed");
+                emit EventAmountDistribution(_eventId, winnerTeam, user);
             }
         }
 
